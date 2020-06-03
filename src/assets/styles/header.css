@@ -1,0 +1,15 @@
+.header {
+    background-color: #fff;
+    height: 3rem;
+    color: white;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: #c8c8c8 1px solid;
+}
+
+.header-logo {
+    width: 10rem;
+    height: auto;
+}
