@@ -1,17 +1,10 @@
 import * as React from 'react'
+import { keepOnlyNumberCharacters, isValidNumber } from '../../helpers/helpers';
 
 const ERROR_REQUIRED = 'Campo requerido';
 const ERROR_NUMBER_FORMAT = 'Formato número incorrecto';
 const NUMBER_TYPE = 'number';
 const PASSWORD = 'password';
-const VALID_NUMBER_PATERN = /^\d+$/;
-
-const isValidNumber = number => number !== '' && !VALID_NUMBER_PATERN.test(number)
-
-export const keepOnlyNumberCharacters = (val = '') => {
-    const numRegex = new RegExp(`\\d`, 'g');
-    return (val.match(numRegex) || []).join('')
-};
 
 class Input extends React.Component {
 
@@ -76,7 +69,7 @@ class Input extends React.Component {
 
     validateMinValue = (value) => {
         const minValue = this.props.minValue || 0;
-        return minValue != null && value <= minValue ? `Ingrese un valor mayor que ${minValue}` : null;
+        return minValue != null && value <= minValue ? `Error ${minValue}` : null;
     }
 
     render() {
@@ -89,7 +82,6 @@ class Input extends React.Component {
             type,
             autocomplete,
             inputCustomClass,
-            readOnly,
             inputReference
         } = this.props;
 
@@ -109,7 +101,6 @@ class Input extends React.Component {
                 autoComplete={autocomplete}
                 onKeyDown={this.onPressKey}
                 inputMode={inputMode}
-                readOnly={readOnly}
                 onChange={e =>
                     this.props.onChange ?
                         this.onChange(e) : {}

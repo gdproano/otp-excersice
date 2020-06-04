@@ -5,3 +5,12 @@ export const transformCounter = counter => {
     const seconds = Math.floor((distance % (1000 * 60)));
     return `${format(minutes)}:${format(seconds)}`;
 }
+
+const VALID_NUMBER_PATERN = /^\d+$/;
+
+export const isValidNumber = number => number !== '' && !VALID_NUMBER_PATERN.test(number)
+
+export const keepOnlyNumberCharacters = (val = '') => {
+    const numRegex = new RegExp(`\\d`, 'g');
+    return (val.match(numRegex) || []).join('')
+};

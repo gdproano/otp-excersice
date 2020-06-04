@@ -4,11 +4,11 @@ import Input from './common/Input';
 import { transformCounter } from '../helpers/helpers';
 const DIGITS = 6
 const FILEDS = new Array(DIGITS).fill(1)
-const MAX_SECONDS = 10
+const MAX_SECONDS = 120
 
 const checkReference = (ref, index) => !!(ref && ref.current && ref.current[index])
 
-const ValidationComponent = ({ email = 'exxxxxiz@gmail.com', phone = '09xxxxx651' }) => {
+const ValidationComponent = ({ email, phone }) => {
 
     const [data, setData] = useState([])
     const refs = useRef(FILEDS.map(() => createRef()))
@@ -47,7 +47,7 @@ const ValidationComponent = ({ email = 'exxxxxiz@gmail.com', phone = '09xxxxx651
         </div>
         <div className="info">
             <p className="timer">El código expira en {transformCounter(timeLeft)}</p>
-            <p className="resend-code" onClick={() => setTimeLeft(MAX_SECONDS)}>Reenviar código</p>
+            <p className="resend-code" onClick={() => { stopCounter(); setTimeLeft(MAX_SECONDS) }}>Reenviar código</p>
         </div>
         <div className="info options">
             <button className="cancel-button">Cancelar</button>

@@ -3,6 +3,9 @@ import logo from './assets/images/MainPichincha.svg';
 import './assets/styles/main.css';
 import ValidationComponent from './components/ValidationCodeComponent';
 
+const EMAIL = 'exxxxxiz@gmail.com'
+const PHONE = '09xxxxx651'
+
 function App() {
   return (
     <>
@@ -10,7 +13,7 @@ function App() {
         <img src={logo} className="header-logo" alt="logo" />
       </header>
       <section>
-        <ValidationComponent />
+        <ValidationComponent email={EMAIL} phone={PHONE} />
       </section>
     </>
   );
