@@ -1,16 +1,20 @@
 import React, {Component} from "react";
-import ExerciseForm from "../components/ExerciseForm";
+import OtpForm from "../components/OtpForm";
 import Card from "../components/Card";
 
-class ExerciseNew extends Component {
+class Authentication extends Component {
 
     state = {
         form: {
-            title: '',
-            description: '',
-            img: '',
-            leftColor: '',
-            rightColor: ''
+            title: 'Código de validación',
+            description: 'Ingresa el codigo de 6 digitos que hemos enviado a tu correo electronico exxxxxiz@gmail.com y celular 09xxxxx305',
+            img: 'https://www.iconsdb.com/icons/preview/orange/checked-checkbox-xxl.png',
+            digitOne: '',
+            digitTwo: '',
+            digitThree: '',
+            digitFour: '',
+            digitFive: '',
+            digitSix: '',
         }
     }
 
@@ -32,11 +36,24 @@ class ExerciseNew extends Component {
         return (
             <div className="container">
 
+
                 <div className="row">
                     <div className="col"/>
                     <div className="col">
                         <div className="col-form-label-sm">
-                            <ExerciseForm
+                            <Card
+                                {...this.state.form}
+                            />
+                        </div>
+                    </div>
+                    <div className="col"/>
+                </div>
+
+                <div className="row">
+                    <div className="col"/>
+                    <div className="col">
+                        <div className="col-form-label-sm">
+                            <OtpForm
                                 onChange={this.handleChange}
                                 onSubmit={this.handleSubmit}
                                 form={this.props}
@@ -52,4 +69,4 @@ class ExerciseNew extends Component {
     }
 }
 
-export default ExerciseNew;
+export default Authentication;

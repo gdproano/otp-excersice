@@ -1,19 +1,28 @@
 import React, {Component} from "react";
-import image1 from '../../images/image1.jpeg'
+import './styles/Card.css';
 
 class Card extends Component {
+
     render() {
+        const {title, description, img} = this.props;
         return (
-            <div>
-                <div>
-                    <img src={image1}/>
-                </div>
-                <div>
-                    <h1> Categoria 1</h1>
-                    <p> Esta es l aprimera categoria</p>
+
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <div className='text-center'>
+                            <img src={img} className="mx-auto" width='30%' alt='default image'/>
+                        </div>
+                        <div className='text-center'>
+                            <h1 className='h1'>{title}</h1>
+                            <p>{description}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        );
+
+
+        )
     }
 }
 
