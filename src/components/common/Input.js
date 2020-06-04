@@ -92,7 +92,7 @@ class Input extends React.Component {
         const inputType = type === PASSWORD ? PASSWORD : 'text';
         const inputMode = type === NUMBER_TYPE ? 'numeric' : 'text';
         return (
-            <input id={id} type={inputType} ref={inputReference ? inputReference : null}
+            <input id={id} aria-label={id} type={inputType} ref={inputReference ? inputReference : null}
                 className={inputClasses}
                 required={required}
                 disabled={disabled}

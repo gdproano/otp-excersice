@@ -51,7 +51,7 @@ const ValidationComponent = ({ email, phone }) => {
         </div>
         <div className="info options">
             <button className="cancel-button">Cancelar</button>
-            <button className={continueStyles} disabled={!isValidInformation}>Continuar</button>
+            <button name="continue" className={continueStyles} disabled={!isValidInformation}>Continuar</button>
         </div>
     </div>
 }
