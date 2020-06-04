@@ -20,3 +20,11 @@
 .validation-section > .description {
     text-align: center;
 }
+
+.validation-section .inputs > .input-secret {
+    width: 45px;
+    height: 45px;
+    margin: 4px;
+    text-align: center;
+    font-size: medium;
+}
