@@ -1,19 +1,12 @@
 import React, { useState, useRef, createRef, useEffect } from 'react';
 import logo from '../assets/images/icon.png';
 import Input from './common/Input';
+import { transformCounter } from '../helpers/helpers';
 const DIGITS = 6
 const FILEDS = new Array(DIGITS).fill(1)
 const MAX_SECONDS = 10
 
 const checkReference = (ref, index) => !!(ref && ref.current && ref.current[index])
-
-const transformCounter = counter => {
-    const format = val => (val < 10 ? '0' : '') + val;
-    const minutes = Math.floor((counter % (1000 * 60 * 60)) / (60));
-    const distance = counter - (minutes * 60);
-    const seconds = Math.floor((distance % (1000 * 60)));
-    return `${format(minutes)}:${format(seconds)}`;
-}
 
 const ValidationComponent = ({ email = 'exxxxxiz@gmail.com', phone = '09xxxxx651' }) => {
 
@@ -37,7 +30,7 @@ const ValidationComponent = ({ email = 'exxxxxiz@gmail.com', phone = '09xxxxx651
         <img src={logo} className="validation-icon" alt="logo" />
         <p className="title">Código de validación</p>
         <p className="description">Ingrese el código de {DIGITS} dígitos que hemos enviado a tu correo electrónico {email} y celular {phone}</p>
-        <div className="inputs">
+        <div className="info inputs">
             {
                 FILEDS.map((_, i) => <Input key={i} inputReference={refs.current[i]} id={i} value={data[i]}
                     minLength={1} maxLength={1} inputCustomClass="input-secret" type="number"
@@ -57,7 +50,7 @@ const ValidationComponent = ({ email = 'exxxxxiz@gmail.com', phone = '09xxxxx651
             <p className="timer">El código expira en {transformCounter(timeLeft)}</p>
             <p className="resend-code" onClick={() => setTimeLeft(MAX_SECONDS)}>Reenviar código</p>
         </div>
-        <div className="options">
+        <div className="info options">
             <button className="cancel-button">Cancelar</button>
             <button className={continueStyles} disabled={!isValidInformation}>Continuar</button>
         </div>

@@ -5,14 +5,14 @@ import ValidationComponent from './components/ValidationCodeComponent';
 
 function App() {
   return (
-    <div className="App">
+    <>
       <header className="header">
         <img src={logo} className="header-logo" alt="logo" />
       </header>
-      <section className="">
+      <section>
         <ValidationComponent />
       </section>
-    </div>
+    </>
   );
 }
 

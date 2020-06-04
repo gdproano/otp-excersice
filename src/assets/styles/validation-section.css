@@ -1,11 +1,25 @@
 .validation-section {
-    width: 50%;
+    width: 20%;
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width: 1200px) {
+    .validation-section {
+        width: 100vw;
+        padding: 20px;
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1500px){
+    .validation-section {
+        width: 30%;
+        padding: 20px;
+    }
+  }
 
 .validation-icon {
     width: 3rem;
@@ -28,6 +42,10 @@
     width: 100%;
 }
 
+.validation-section > .options {
+    margin-top: 50px;
+}
+
 .validation-section .info > .resend-code {
     font-size: 12px;
     font-weight: 500;
@@ -43,10 +61,6 @@
     font-size: medium;
 }
 
-.validation-section .options .cancel-button {
-    color: #08086f;
-}
-
 .validation-section .options .continue-button {
     background-color: #fbf117;
     border: solid 1px #f7eb0f;
@@ -54,6 +68,10 @@
 
 .validation-section .options .continue-button:hover {
     background-color: #e6da03d2;
+}
+
+.validation-section .options .cancel-button {
+    color: #08086f;
 }
 
 .validation-section .options .cancel-button:hover{
