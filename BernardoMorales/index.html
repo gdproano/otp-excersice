@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script>
+    <script src="https://rawgit.com/fergaldoyle/vue-form/master/dist/vue-form.min.js"></script>
+    
+
+</head>
+
+<body>
+    <header>
+        <div class="navbar border-bottom">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <img alt="Banco Pichincha" src="https://www.pichincha.com/portal/portals/0/MainPichincha.svg">
+                </a>
+
+            </div>
+        </div>
+    </header>
+    <div id="app" class="container py-5">
+
+        <div class="container">
+            <div class="row m-4">
+                <div class="col">
+                </div>
+                <div class="col-8 text-center ">
+                    <h1>Código de validacion</h1>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="row m-3">
+                <div class="col">
+                </div>
+                <div class="col-8 text-center normal-text">
+                    {{ message }}
+                </div>
+                <div class="col">
+                </div>
+            </div>
+
+            <div class="row m-4">
+                <div class="col">
+                </div>
+                <div class="col-6 text-center">
+                    <vue-form :state="formstate" @submit.prevent="onSubmit">
+                        <validate auto-label class="form-group required-field" >
+                       
+                            <input type="text" maxlength="1" @keyup="onKeyup" name="one"
+                                class="form-control char" required v-model.lazy="formData.one" ref="one">
+                            <input type="text" maxlength="1" @keyup="onKeyup"  name="two"
+                                class="form-control char" required v-model.lazy="formData.two" ref="two">
+                            <input type="text" maxlength="1" @keyup="onKeyup"  name="three"
+                                class="form-control char" required v-model.lazy="formData.three" ref="three">
+                            <input type="text" maxlength="1" @keyup="onKeyup"  name="four"
+                                class="form-control char" required v-model.lazy="formData.four" ref="four">
+                            <input type="text" maxlength="1" @keyup="onKeyup"  name="five"
+                                class="form-control char" required v-model.lazy="formData.five" ref="five">
+                            <input type="text" maxlength="1" @keyup="onKeyup"  name="six"
+                                class="form-control char" required v-model.lazy="formData.six" ref="six">
+                                                      
+                  
+
+                            <field-messages name="one" show="$touched || $submitted" class="form-control-feedback">
+                                
+                                <div slot="required">ingrese un numero completo de 6 dígitos</div>
+                            </field-messages>
+                            <field-messages name="two" show="$touched || $submitted" class="form-control-feedback">
+                                
+                                <div slot="required">ingrese un numero completo de 6 dígitos</div>
+                            </field-messages>
+                            <field-messages name="three" show="$touched || $submitted" class="form-control-feedback">
+                                
+                                <div slot="required">ingrese un numero completo de 6 dígitos</div>
+                            </field-messages>
+                            <field-messages name="four" show="$touched || $submitted" class="form-control-feedback">
+                                
+                                <div slot="required">ingrese un numero completo de 6 dígitos</div>
+                            </field-messages>
+                            <field-messages name="five" show="$touched || $submitted" class="form-control-feedback">
+                                
+                                <div slot="required">ingrese un numero completo de 6 dígitos</div>
+                            </field-messages>
+                            <field-messages name="six" show="$touched || $submitted" class="form-control-feedback">
+                                
+                                <div slot="required">ingrese un numero completo de 6 dígitos</div>
+                            </field-messages>
+                        </validate>
+
+
+                        <div class="row">
+                            <div class="col ">
+                                <p class="text-left hrlp">{{ timeLeft }}</p>
+                            </div>
+                            <div class="col">
+                                <p class="text-right hrlp">reenviar código</p>
+                            </div>
+                        </div>
+
+                        <div class=" form-group mt-5">
+                            <button class="btn btn-secondary btn-lg" type="submit">Cancelar</button>
+                            <button class="btn btn-primary btn-lg" type="submit">Continuar</button>
+                        </div>
+
+
+                        
+                    </vue-form>
+
+                </div>
+                <div class="col">
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

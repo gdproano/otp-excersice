@@ -1,0 +1,101 @@
+h1, h2, h3, h4 {
+    font-family: 'Prelo Slab',sans-serif;
+    color: #0F265C;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 40px;
+}
+.hrlp{
+  font-size: 12px;
+  
+}
+.hrlp.text-right{
+  font-size: 12px;
+   color: #0F265C;
+}
+.form-group {
+    margin: 20px auto;
+    text-align: center;
+}
+.form-control.char{
+    display: inline;
+    margin: 0px;
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    text-align:center;
+    font-size: 33px;
+    
+}
+.form-control.char.form-control-danger{
+  border: solid 1px red;
+}
+
+.btn.btn-primary {
+    background: #FFDD00;
+    font-family: 'Prelo',sans-serif;
+    font-size: 14px;
+    color: #0F265C;
+    padding: 12px 25px;
+    border-radius: 4px;
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: none;
+    border: none;
+    font-weight: bold;
+    -webkit-appearance: none;
+    text-align: center;
+    border: 0;
+    min-width: 160px;
+    box-sizing: border-box;
+    line-height: 24px;
+}
+.no-visible{visibility: hidden;}
+
+.btn.btn-primary:active,  {
+    background-color: #FFC500;
+     color: #0F265C;
+}
+.btn.btn-primary:hover {
+    background: #FFD100;
+    color: #0F265C;
+}
+
+.btn.btn-secondary {
+    background: #E9ECF3;
+    font-family: 'Prelo',sans-serif;
+    font-size: 14px;
+    color: #0F265C;
+    padding: 11px 25px;
+    border-radius: 4px;
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: none;
+    border: none;
+    font-weight: bold;
+    -webkit-appearance: none;
+    text-align: center;
+    border: 1px solid #D4D8E1;
+    min-width: 160px;
+    box-sizing: border-box;
+    line-height: 24px;
+}
+
+.btn.btn-secondary:active {
+    background-color: #B5BFD6;
+    color: #0F265C;
+}
+
+.btn.btn-secondary:hover {
+    background: #C7CFE1;
+    color: #0F265C;
+}
+
+.normal-text {
+    color: #4a4a50;
+}
+
+.navbar-brand img {
+    width: 160px;
+}
+
