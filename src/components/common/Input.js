@@ -6,16 +6,11 @@ const NUMBER_TYPE = 'number';
 const PASSWORD = 'password';
 const VALID_NUMBER_PATERN = /^\d+$/;
 
-const isValidNumber = (number) => {
-    return number !== '' && !VALID_NUMBER_PATERN.test(number);
-}
+const isValidNumber = number => number !== '' && !VALID_NUMBER_PATERN.test(number)
 
-const escapeRegExp = (str) =>
-    str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&');
-
-export const keepOnlyNumberCharacters = (val = '', decimalSeparator = '.') => {
-    const numRegex = new RegExp(`\\d|${escapeRegExp(decimalSeparator)}`, 'g');
-    return (val.match(numRegex) || []).join('').replace(decimalSeparator, '.');
+export const keepOnlyNumberCharacters = (val = '') => {
+    const numRegex = new RegExp(`\\d`, 'g');
+    return (val.match(numRegex) || []).join('')
 };
 
 class Input extends React.Component {
@@ -118,8 +113,7 @@ class Input extends React.Component {
                 onChange={e =>
                     this.props.onChange ?
                         this.onChange(e) : {}
-                }
-                onClick={() => this.props.onClick ? this.props.onClick() : ''} />
+                } />
         );
     }
 }

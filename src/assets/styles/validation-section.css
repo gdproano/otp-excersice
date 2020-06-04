@@ -21,10 +21,46 @@
     text-align: center;
 }
 
+.validation-section > .info {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.validation-section .info > .resend-code {
+    font-size: 12px;
+    font-weight: 500;
+    color: #2196F3;
+    cursor: pointer;
+}
+
 .validation-section .inputs > .input-secret {
     width: 45px;
     height: 45px;
     margin: 4px;
     text-align: center;
     font-size: medium;
+}
+
+.validation-section .options .cancel-button {
+    color: #08086f;
+}
+
+.validation-section .options .continue-button {
+    background-color: #fbf117;
+    border: solid 1px #f7eb0f;
+}
+
+.validation-section .options .continue-button:hover {
+    background-color: #e6da03d2;
+}
+
+.validation-section .options .cancel-button:hover{
+    background-color: #dddcdc;
+}
+
+.btn-disabled {
+    color: #c5c8ac;
+    background-color: #fcf595 !important;
 }

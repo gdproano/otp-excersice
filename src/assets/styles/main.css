@@ -1,11 +1,6 @@
-:root {
-  --main-text-color: #4A4A50;
-}
+/* import common styles*/
+@import "common.css";
 
-html {
-  color: var(--main-text-color);
-  font-size: 0.8rem;
-}
 /* import styles of header*/
 @import "header.css";
 

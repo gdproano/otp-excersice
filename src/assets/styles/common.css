@@ -1,0 +1,24 @@
+:root {
+    --main-text-color: #4A4A50;
+  }
+  
+  html {
+    color: var(--main-text-color);
+    font-size: 0.9rem;
+  }
+  
+  button {
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    padding: 0 40px 0 40px;
+    letter-spacing: 2px;
+    border: solid 1px #b8b8b8;
+    height: 48px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    justify-content: center;
+    outline:none;
+  }
