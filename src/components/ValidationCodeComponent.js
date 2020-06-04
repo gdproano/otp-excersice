@@ -18,12 +18,12 @@ const ValidationComponent = ({ email, phone }) => {
     useEffect(() => {
         timerRef.current = setTimeout(_ => setTimeLeft(timeLeft - 1), 1000)
         if (timeLeft === 0) stopCounter(timerRef.current)
-    });
+    })
 
     const stopCounter = () => { clearTimeout(timerRef.current) }
 
     const isValidInformation = data.length === DIGITS && data.every(item => item !== '') && timeLeft > 0
-    const continueStyles = `continue-button ${isValidInformation ? '' : 'btn-disabled'}`;
+    const continueStyles = `continue-button ${isValidInformation ? '' : 'btn-disabled'}`
 
     return <div className="validation-section">
         <img src={logo} className="validation-icon" alt="logo" />

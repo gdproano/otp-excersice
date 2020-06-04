@@ -3,7 +3,7 @@ export const transformCounter = counter => {
     const minutes = Math.floor((counter % (1000 * 60 * 60)) / (60));
     const distance = counter - (minutes * 60);
     const seconds = Math.floor((distance % (1000 * 60)));
-    return `${format(minutes)}:${format(seconds)}`;
+    return `${format(minutes)}:${format(seconds)}`
 }
 
 const VALID_NUMBER_PATERN = /^\d+$/;
@@ -13,4 +13,4 @@ export const isValidNumber = number => number !== '' && !VALID_NUMBER_PATERN.tes
 export const keepOnlyNumberCharacters = (val = '') => {
     const numRegex = new RegExp(`\\d`, 'g');
     return (val.match(numRegex) || []).join('')
-};
+}

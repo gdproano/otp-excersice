@@ -48,10 +48,10 @@ class Input extends React.Component {
         const maxLength = this.props.maxLength || 100;
         let value = val;
         if (type === NUMBER_TYPE) {
-            value = keepOnlyNumberCharacters(value);
+            value = keepOnlyNumberCharacters(value)
         }
         if (String(value).trim().length > maxLength) {
-            return value.substr(0, maxLength);
+            return value.substr(0, maxLength)
         }
         return value;
     }
