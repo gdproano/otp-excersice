@@ -12,16 +12,15 @@ const ValidationComponent = ({ email = 'exxxxxiz@gmail.com', phone = '09xxxxx651
 
     const [data, setData] = useState([])
     const refs = useRef(FILEDS.map(() => createRef()))
+    const timerRef = useRef(false)
     const [timeLeft, setTimeLeft] = useState(MAX_SECONDS)
 
     useEffect(() => {
-        let timer = startTimer(timeLeft)
-        if (timeLeft === 0) stopCounter(timer)
+        timerRef.current = setTimeout(_ => setTimeLeft(timeLeft - 1), 1000)
+        if (timeLeft === 0) stopCounter(timerRef.current)
     });
 
-    const startTimer = time => setTimeout(_ => setTimeLeft(time - 1), 1000)
-
-    const stopCounter = timer => clearTimeout(timer)
+    const stopCounter = () => { clearTimeout(timerRef.current) }
 
     const isValidInformation = data.length === DIGITS && data.every(item => item !== '') && timeLeft > 0
     const continueStyles = `continue-button ${isValidInformation ? '' : 'btn-disabled'}`;
