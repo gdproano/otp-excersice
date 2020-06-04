@@ -1,0 +1,40 @@
+.button-bp {
+    background-color: #FFDF00;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button-bp-continue {
+    background-color: #FFDF00;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.button-bp-cancel {
+    background-color: #E0DDDD;
+    border: none;
+    color: #0F255E;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.text-med{
+    margin-top: 1%;
+    font-size: 13px;
+    color: #565555;
+}

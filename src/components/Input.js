@@ -1,23 +1,5 @@
 import React, {Component} from "react";
 
-// const Input = ({value, onChange, fieldType, fieldName, ref}) => {
-//
-//     return (
-//         <div className='col p-1'>
-//             <input
-//                 type={fieldType}
-//                 className="form-control text-center"
-//                 placeholder=""
-//                 maxLength="1"
-//                 name={fieldName}
-//                 onChange={onChange}
-//                 value={value}
-//                 ref={ref}
-//             />
-//         </div>
-//     );
-// }
-
 class Input extends Component {
     constructor(props) {
         super(props);
@@ -28,21 +10,32 @@ class Input extends Component {
         this.textInput.current.focus();
     }
 
-    render() {
+    validNumber = (e) => {
+        const keyValue = e.target.value;
+        if (/^\d$/.test(keyValue)) {
+            this.props.onChange(e);
+            e.preventDefault();
+        } else {
+            e.target.value = ''
+            this.props.onChange(e);
+        }
 
-        const {value, onChange, fieldType, fieldName, onKeyUp} = this.props;
+
+    }
+
+    render() {
+        const {value, fieldType, fieldName, onKeyDown} = this.props;
         return (
             <div className='col p-1'>
                 <input
                     type={fieldType}
                     className="form-control text-center"
-                    placeholder=""
                     maxLength="1"
                     name={fieldName}
-                    onChange={onChange}
+                    onChange={this.validNumber}
                     value={value}
                     ref={this.textInput}
-                    onKeyUp={onKeyUp}
+                    onKeyDown={onKeyDown}
                 />
             </div>
         );

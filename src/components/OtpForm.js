@@ -1,12 +1,15 @@
 import React, {Component} from "react";
 import Input from "./Input";
 import Button from "./Button";
+import '../styles/OtpForm.css'
+import {TIMER, KEY_BACKSPACE, SEPARATOR_TWO_POINTS, STRING_ZERO, TIMER_ZERO, EMPTY_FORM} from '../constants/general';
+import {getNameByParameters} from "../util/utils";
 
 
 class OtpForm extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.num1 = React.createRef();
         this.num2 = React.createRef();
         this.num3 = React.createRef();
@@ -16,10 +19,9 @@ class OtpForm extends Component {
     }
 
     state = {
-        form: {
-            value: '',
-        },
-        timer: 120000
+        form: EMPTY_FORM,
+        timer: 0,
+        isValid: false
     }
 
     handleChange = e => {
@@ -29,31 +31,42 @@ class OtpForm extends Component {
                 [e.target.name]: e.target.value
             }
         })
+        this.doFocusAction(e);
+        this.validateEnableButton();
+    }
 
-        console.log(e.key)
-        if (e.target.name === 'num2' && !!e.target.value) {
-
-            this.num5.current.focusTextInput();
+    validateEnableButton() {
+        const isInputReady = !!this.state.form.num1 && !!this.state.form.num2 && !!this.state.form.num3
+            && !!this.state.form.num4 && !!this.state.form.num5;
+        if (isInputReady && this.state.timer !== TIMER_ZERO) {
+            this.setState({
+                isValid: true
+            })
         }
-        // this.num6.current.focusTextInput();
+    }
+
+    doFocusAction(e) {
+        if (!!e.target.value) {
+            this[getNameByParameters(e.target.name, true)].current.focusTextInput();
+        }
     }
 
     startTimer = (duration) => {
-        var timer = duration, minutes, seconds;
+        let timer = duration, minutes, seconds;
         this.interval = setInterval(() => {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
 
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
+            minutes = minutes < 10 ? STRING_ZERO + minutes : minutes;
+            seconds = seconds < 10 ? STRING_ZERO + seconds : seconds;
 
-            let timer1 = minutes + ":" + seconds;
-            this.setState({
-                timer: timer1
-            })
+            let timerMinutesSeconds = minutes + SEPARATOR_TWO_POINTS + seconds;
+            this.setState({timer: timerMinutesSeconds})
 
             if (timer > 0) {
                 --timer;
+            } else {
+                this.setState({isValid: false})
             }
         }, 1000);
 
@@ -61,94 +74,94 @@ class OtpForm extends Component {
 
     resetTimer = () => {
         clearInterval(this.interval)
-        this.startTimer(120)
+        this.startTimer(TIMER)
+        this.setState({form: EMPTY_FORM, isValid: false})
     }
 
     handlerKeyCode = e => {
-        if (e.keyCode === 8 && e.currentTarget.name === 'num2' && !e.currentTarget.value) {
-            this.num1.current.focusTextInput();
+        if (e.keyCode === KEY_BACKSPACE && !e.currentTarget.value) {
+            this[getNameByParameters(e.currentTarget.name, false)].current.focusTextInput();
         }
     }
 
     componentDidMount() {
-        this.startTimer(120)
+        this.startTimer(TIMER)
     }
 
     render() {
-
-
         return (
             <div>
                 <div className="row">
                     <Input
                         onChange={this.handleChange}
-                        form={this.state.form.num1}
+                        value={this.state.form.num1}
                         fieldType='text'
                         fieldName='num1'
                         ref={this.num1}
-                        onKeyUp={this.handlerKeyCode}
+                        onKeyDown={this.validate}
                     />
                     <Input
                         onChange={this.handleChange}
-                        form={this.state.form.num2}
+                        value={this.state.form.num2}
                         fieldType='text'
                         fieldName='num2'
                         ref={this.num2}
-                        onKeyUp={this.handlerKeyCode}
+                        onKeyDown={this.handlerKeyCode}
                     />
                     <Input
                         onChange={this.handleChange}
-                        form={this.state.form.num3}
+                        value={this.state.form.num3}
                         fieldType='text'
                         fieldName='num3'
                         ref={this.num3}
-                        onKeyUp={this.handlerKeyCode}
+                        onKeyDown={this.handlerKeyCode}
                     />
                     <Input
                         onChange={this.handleChange}
-                        form={this.state.form.num4}
+                        value={this.state.form.num4}
                         fieldType='text'
                         fieldName='num4'
                         ref={this.num4}
-                        onKeyUp={this.handlerKeyCode}
+                        onKeyDown={this.handlerKeyCode}
                     />
                     <Input
                         onChange={this.handleChange}
-                        form={this.state.form.num5}
+                        value={this.state.form.num5}
                         fieldType='text'
                         fieldName='num5'
                         ref={this.num5}
-                        onKeyUp={this.handlerKeyCode}
+                        onKeyDown={this.handlerKeyCode}
                     />
                     <Input
                         onChange={this.handleChange}
-                        form={this.state.form.num6}
+                        value={this.state.form.num6}
                         fieldType='text'
                         fieldName='num6'
                         ref={this.num6}
-                        onKeyUp={this.handlerKeyCode}
+                        onKeyDown={this.handlerKeyCode}
                     />
 
                 </div>
                 <div className="row">
-                    <div className="col">El codigo expira en {this.state.timer}</div>
-                    <div className="col text-right">
-                    <span onClick={this.resetTimer} className='pointer'>
-                        text2
-                    </span>
+                    <div className="col text-med">El codigo expira en {this.state.timer}</div>
+                    <div className="col text-right  text-med">
+                        <button type="button" className="btn btn-link btn-sm" onClick={this.resetTimer}>Reenviar
+                            código
+                        </button>
                     </div>
                 </div>
-                <div className="row mt-5">
+                <div className="row mt-3">
                     <Button
                         text='Cancelar'
-                        style='btn-secondary mr-4'
-                        onClick={() => console.log("CLick!")}
+                        className='button-bp-cancel mr-4'
+                        onClick={() => console.log("CLick Cancel!")}
+                        disabled={false}
                     />
                     <Button
                         text='Continuar'
-                        style='btn-primary'
-                        onClick={() => console.log("CLick!")}
-                        disabled={true}
+                        className='button-bp-continue'
+                        onClick={() => console.log("Succesfully!")}
+                        disabled={!this.state.isValid}
                     />
                 </div>
             </div>

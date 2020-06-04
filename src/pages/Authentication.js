@@ -1,21 +1,15 @@
 import React, {Component} from "react";
 import OtpForm from "../components/OtpForm";
 import Card from "../components/Card";
+import Header from "../components/Header";
 
 class Authentication extends Component {
 
     state = {
         form: {
             title: 'Código de validación',
-            description: 'Ingresa el codigo de 6 digitos que hemos enviado a tu correo electronico exxxxxiz@gmail.com y celular 09xxxxx305',
-            img: 'https://www.iconsdb.com/icons/preview/orange/checked-checkbox-xxl.png',
-            digitOne: '',
-            digitTwo: '',
-            digitThree: '',
-            digitFour: '',
-            digitFive: '',
-            digitSix: '',
-        }
+            description: 'Ingresa el código de 6 digitos que hemos enviado a tu correo electronico exxxxxiz@gmail.com y celular 09xxxxx305',
+        },
     }
 
     handleChange = e => {
@@ -27,15 +21,14 @@ class Authentication extends Component {
         })
     }
 
-    handleSubmit = e => {
-        e.preventDefault()
-        console.log(this.state)
-    }
-
     render() {
         return (
             <div className="container">
-
+                <div>
+                    <Header
+                        url_header={this.state.url_header}
+                    />
+                </div>
 
                 <div className="row">
                     <div className="col"/>
@@ -55,7 +48,6 @@ class Authentication extends Component {
                         <div className="col-form-label-sm">
                             <OtpForm
                                 onChange={this.handleChange}
-                                onSubmit={this.handleSubmit}
                                 form={this.props}
                             />
                         </div>

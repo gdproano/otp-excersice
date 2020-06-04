@@ -1,0 +1,13 @@
+.card {
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+}
+
+.h1 {
+    display: block;
+    margin-left: auto;
+    font-size: 23px;
+    color: #2d276b;
+    font-family: "Roboto Light", sans-serif;
+}
