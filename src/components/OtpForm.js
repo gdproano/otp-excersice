@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import Input from "./Input";
 import Button from "./Button";
 import '../styles/OtpForm.css'
-import {TIMER, KEY_BACKSPACE, SEPARATOR_TWO_POINTS, STRING_ZERO, TIMER_ZERO, EMPTY_FORM} from '../constants/general';
-import {getNameByParameters} from "../util/utils";
+import {TIMER, KEY_BACKSPACE, SEPARATOR_TWO_POINTS, STRING_ZERO, EMPTY_FORM} from '../constants/general';
+import {getNameByParameters, validateEnableButton} from "../util/utils";
 
 
 class OtpForm extends Component {
@@ -36,13 +36,9 @@ class OtpForm extends Component {
     }
 
     validateEnableButton() {
-        const isInputReady = !!this.state.form.num1 && !!this.state.form.num2 && !!this.state.form.num3
-            && !!this.state.form.num4 && !!this.state.form.num5;
-        if (isInputReady && this.state.timer !== TIMER_ZERO) {
-            this.setState({
-                isValid: true
-            })
-        }
+        this.setState({
+            isValid: validateEnableButton(this.state.form, this.state.timer)
+        })
     }
 
     doFocusAction(e) {
